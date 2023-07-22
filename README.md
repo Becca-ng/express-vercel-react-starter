@@ -1,2 +1,2 @@
-# Express React Starter
+# Express Vercel React Starter
 
