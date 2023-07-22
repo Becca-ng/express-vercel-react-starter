@@ -7,9 +7,10 @@ const server = express();
 const { PORT } = process.env;
 
 server.use(express.json());
-server.use(express.static(path.resolve(`${__dirname}/react-ui/build`)));
+server.use(express.static(path.resolve(`${__dirname}/public`)));
 
-server.get('/heartbeat', (req, res) => {
+// namespace server-side routing with `api/`
+server.get('/api/heartbeat', (req, res) => {
   res.json({
     "is": "working"
   })
@@ -17,9 +18,9 @@ server.get('/heartbeat', (req, res) => {
 
 // delegate client-side routing to the client
 server.get('*', (req, res) => {
-  res.sendFile(path.resolve(`${__dirname}/react-ui/build/index.html')`));
+  res.sendFile(path.resolve(`${__dirname}/public/index.html')`));
 });
 
 server.listen(process.env.PORT || PORT, () => {
   console.log(`The server is listening at port ${PORT}`);
-})
+});
