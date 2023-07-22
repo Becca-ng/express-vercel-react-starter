@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Boilerplate code for deploying applications built with express and react to Vercel.",
   "scripts": {
+    "b": "npm run compile:dev",
     "compile:dev":  "rimraf public && cd react-ui/ && npm run build && cd .. && mv react-ui/build public",
     "compile:prod": "rimraf public && cd react-ui/ && npm install && npm run build && cd .. && mv react-ui/build public",
     "dev": "nodemon server.js",
-    "preinstall": "npm compile:prod",
+    "preinstall": "npm run compile:prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
